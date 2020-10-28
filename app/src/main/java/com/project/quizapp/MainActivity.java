@@ -23,9 +23,22 @@ public class MainActivity extends AppCompatActivity {
         arrayList.add("Java");
         arrayList.add("Python");
         arrayList.add("C");
-
+        final Intent intent1= new Intent(this,PythonQ.class);
         ArrayAdapter<String> arrayAdapter= new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,arrayList);
         list.setAdapter(arrayAdapter);
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                String clickedItem =(String) list.getItemAtPosition(position);
+                Toast.makeText(MainActivity.this,clickedItem,Toast.LENGTH_LONG).show();
+                if(clickedItem.equals("Python")){{
+                    startActivity(intent1);
+                }}
+                else{
+                    Toast.makeText(getApplicationContext(),"Bug in Code",Toast.LENGTH_LONG).show();
+                }
+            }
+        });
 
     }
 }
